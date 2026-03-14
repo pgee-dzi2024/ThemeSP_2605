@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Системен Монитор</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="height: 100vh;">
+
+    <div class="card p-4 shadow-sm" style="width: 100%; max-width: 400px;">
+        <div class="text-center mb-4">
+            <h4>🔒 Достъп до системата</h4>
+            <p class="text-muted small">Моля, въведете вашите данни</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="alert alert-danger p-2 small">
+                Грешно потребителско име или парола.
+            </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label class="form-label">Потребителско име</label>
+                <input type="text" name="username" class="form-control" required autofocus>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Парола</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-dark w-100">Вход</button>
+        </form>
+    </div>
+
+</body>
+</html>
